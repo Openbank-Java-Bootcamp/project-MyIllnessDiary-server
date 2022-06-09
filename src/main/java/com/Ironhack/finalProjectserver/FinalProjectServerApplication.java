@@ -20,7 +20,7 @@ public class FinalProjectServerApplication {
 		SpringApplication.run(FinalProjectServerApplication.class, args);
 	}
 
-	/*@Bean
+	@Bean
 	public WebMvcConfigurer corsConfigurer(){
 		return new WebMvcConfigurer() {
 			@Override
@@ -28,6 +28,6 @@ public class FinalProjectServerApplication {
 				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost:3000");
 			}
 		};
-	}*/
+	}
 
 }

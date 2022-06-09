@@ -1,6 +1,8 @@
 package com.Ironhack.finalProjectserver.service.impl;
 
+import com.Ironhack.finalProjectserver.model.Role;
 import com.Ironhack.finalProjectserver.model.User;
+import com.Ironhack.finalProjectserver.repository.RoleRepository;
 import com.Ironhack.finalProjectserver.repository.UserRepository;
 import com.Ironhack.finalProjectserver.service.interfaces.UserServiceInterface;
 import lombok.extern.slf4j.Slf4j;
@@ -12,9 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -26,8 +26,8 @@ public class UserService implements UserServiceInterface, UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    //@Autowired
-    //private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     public User saveUser(User userSignupDTO) {
         log.info("Saving a new user {} inside of the database", userSignupDTO.getName());
@@ -50,11 +50,11 @@ public class UserService implements UserServiceInterface, UserDetailsService {
         } else {
             log.info("User is found in the database: {}", email);
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            /*user.getRoles().forEach(role -> {
-                authorities.add(new SimpleGrantedAuthority(role.getName()));
-            });*/
-            //return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
-            return null;
+            user.getRoles().forEach(role -> {
+                authorities.add(new SimpleGrantedAuthority(role.getName().name()));
+            });
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+
         }
     }
 }
