@@ -30,6 +30,9 @@ public class User {
             message = "Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.")
     private String password;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<Role> roles = new ArrayList<>();
+
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
