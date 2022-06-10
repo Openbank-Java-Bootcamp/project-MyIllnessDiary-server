@@ -1,5 +1,6 @@
 package com.Ironhack.finalProjectserver.controller;
 
+import com.Ironhack.finalProjectserver.DTO.RoleToUserDTO;
 import com.Ironhack.finalProjectserver.DTO.UserVerifyDTO;
 import com.Ironhack.finalProjectserver.model.User;
 import com.Ironhack.finalProjectserver.repository.UserRepository;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 @Slf4j
 public class AuthController {
     @Autowired
@@ -34,9 +35,9 @@ public class AuthController {
     public String verifyToken(Authentication authentication) {
         String email = (String) authentication.getPrincipal();
         User userFromDb = userRepository.findByEmail(email);
-        UserVerifyDTO userVerifyDTO = new UserVerifyDTO(userFromDb.getName());
+        RoleToUserDTO roleToUserDTO = new RoleToUserDTO(userFromDb.getEmail(), userFromDb.getRoles());
         Gson gson = new Gson();
-        String userDetails = gson.toJson(userVerifyDTO);
+        String userDetails = gson.toJson(roleToUserDTO);
         return userDetails;
     }
 }

@@ -30,4 +30,5 @@ public class RoleService implements RoleServiceInterface {
         user.getRoles().add(role);
         userRepository.save(user);
     }
+
 }

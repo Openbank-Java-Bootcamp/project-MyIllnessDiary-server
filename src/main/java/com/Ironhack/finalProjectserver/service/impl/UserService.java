@@ -51,7 +51,8 @@ public class UserService implements UserServiceInterface, UserDetailsService {
             log.info("User is found in the database: {}", email);
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
             user.getRoles().forEach(role -> {
-                authorities.add(new SimpleGrantedAuthority(role.getName().name()));
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+
             });
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
 

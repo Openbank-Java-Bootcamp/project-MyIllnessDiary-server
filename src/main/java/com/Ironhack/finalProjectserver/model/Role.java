@@ -1,6 +1,6 @@
 package com.Ironhack.finalProjectserver.model;
 
-import com.Ironhack.finalProjectserver.enums.Rol;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated
-    private Rol name;
+
+    private String name;
 }
+
