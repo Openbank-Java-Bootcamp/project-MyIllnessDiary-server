@@ -34,10 +34,10 @@ public class FinalProjectServerApplication {
 			roleService.saveRole(new Role(null, "ROLE_USER"));
 			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "1234", new ArrayList<>()));
-			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "1234", new ArrayList<>()));
-			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "1234", new ArrayList<>()));
-			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "1234", new ArrayList<>()));
+			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "P@ssw0rd", new ArrayList<>()));
+			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "P@ssw0rd", new ArrayList<>()));
+			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "P@ssw0rd", new ArrayList<>()));
+			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "P@ssw0rd", new ArrayList<>()));
 
 			roleService.addRoleToUser("john@gmail.com", "ROLE_USER");
 			roleService.addRoleToUser("james@gmail.com", "ROLE_ADMIN");
