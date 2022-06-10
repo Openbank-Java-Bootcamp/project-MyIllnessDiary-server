@@ -28,6 +28,7 @@ public class FinalProjectServerApplication {
 	}
 
 	@Bean
+
 	CommandLineRunner run(UserService userService, RoleService roleService) {
 		return args -> {
 			roleService.saveRole(new Role(null, "ROLE_USER"));
@@ -46,6 +47,7 @@ public class FinalProjectServerApplication {
 	}
 
 	@Bean
+
 	public WebMvcConfigurer corsConfigurer(){
 		return new WebMvcConfigurer() {
 			@Override

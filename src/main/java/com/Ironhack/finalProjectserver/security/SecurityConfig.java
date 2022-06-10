@@ -45,10 +45,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors();
         http.sessionManagement().sessionCreationPolicy(STATELESS);
+
         http.authorizeRequests().antMatchers("api/auth/login/**").permitAll();
         http.authorizeRequests().antMatchers("api/auth/signup").permitAll();
        // http.authorizeRequests().antMatchers(GET, "/api/auth/signup").hasAnyAuthority("ROLE_USER");
         //http.authorizeRequests().antMatchers(POST, "/api/auth/signup").hasAnyAuthority("ROLE_ADMIN");
+
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
