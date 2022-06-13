@@ -31,18 +31,18 @@ public class FinalProjectServerApplication {
 
 	CommandLineRunner run(UserService userService, RoleService roleService) {
 		return args -> {
-			roleService.saveRole(new Role(null, "ROLE_USER"));
-			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
+			roleService.saveRole(new Role(null, "ROLE_PATIENT"));
+			roleService.saveRole(new Role(null, "ROLE_DOCTOR"));
 
-			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "P@ssw0rd", new ArrayList<>()));
-			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "P@ssw0rd", new ArrayList<>()));
-			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "P@ssw0rd", new ArrayList<>()));
-			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "P@ssw0rd", new ArrayList<>()));
+			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "P@ssw0rd", null));
+			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "P@ssw0rd", null));
+			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "P@ssw0rd", null));
+			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "P@ssw0rd", null));
 
-			roleService.addRoleToUser("john@gmail.com", "ROLE_USER");
-			roleService.addRoleToUser("james@gmail.com", "ROLE_ADMIN");
-			roleService.addRoleToUser("jane@gmail.com", "ROLE_USER");
-			roleService.addRoleToUser("chris@gmail.com", "ROLE_ADMIN");
+			roleService.addRoleToUser("john@gmail.com", "ROLE_PATIENT");
+			roleService.addRoleToUser("james@gmail.com", "ROLE_DOCTOR");
+			roleService.addRoleToUser("jane@gmail.com", "ROLE_PATIENT");
+			roleService.addRoleToUser("chris@gmail.com", "ROLE_DOCTOR");
 		};
 	}
 

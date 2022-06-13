@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,7 @@ public class Diary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private LocalDate diaryDate;
     @OneToMany(mappedBy = "diary",cascade=CascadeType.ALL)
     private List<DiaryLog> diaryLogs;
 }

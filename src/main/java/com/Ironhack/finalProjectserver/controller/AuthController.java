@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -23,6 +25,17 @@ public class AuthController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    public List<User> getUsers() {
+        return userService.getUsers();
+    }
+    @GetMapping("/users/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserById(@PathVariable(name = "id") Long userId) {
+        return userRepository.findById(userId).get();
+    }
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
@@ -35,9 +48,10 @@ public class AuthController {
     public String verifyToken(Authentication authentication) {
         String email = (String) authentication.getPrincipal();
         User userFromDb = userRepository.findByEmail(email);
-        RoleToUserDTO roleToUserDTO = new RoleToUserDTO(userFromDb.getEmail(), userFromDb.getRoles());
+        //RoleToUserDTO roleToUserDTO = new RoleToUserDTO(userFromDb.getEmail(), userFromDb.getRoles());
+        UserVerifyDTO userVerifyDTO= new UserVerifyDTO(userFromDb.getName(),userFromDb.getRoles().getName());
         Gson gson = new Gson();
-        String userDetails = gson.toJson(roleToUserDTO);
+        String userDetails = gson.toJson(userVerifyDTO);
         return userDetails;
     }
 }
