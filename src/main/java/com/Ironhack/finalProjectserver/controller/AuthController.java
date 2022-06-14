@@ -2,7 +2,9 @@ package com.Ironhack.finalProjectserver.controller;
 
 import com.Ironhack.finalProjectserver.DTO.RoleToUserDTO;
 import com.Ironhack.finalProjectserver.DTO.UserVerifyDTO;
+import com.Ironhack.finalProjectserver.model.Role;
 import com.Ironhack.finalProjectserver.model.User;
+import com.Ironhack.finalProjectserver.repository.RoleRepository;
 import com.Ironhack.finalProjectserver.repository.UserRepository;
 import com.Ironhack.finalProjectserver.service.impl.UserService;
 import com.google.gson.Gson;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,6 +29,16 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @GetMapping("/patients")
+    @ResponseStatus(HttpStatus.OK)
+    public Role search(@RequestParam Optional<String> roles) {
+
+        return roleRepository.findByName(roles.get());
+
+    }
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getUsers() {

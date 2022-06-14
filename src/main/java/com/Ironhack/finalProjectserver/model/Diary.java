@@ -17,6 +17,8 @@ public class Diary {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate diaryDate;
+    private String comments;
+    private String doctorName;
     @OneToMany(mappedBy = "diary",cascade=CascadeType.ALL)
     private List<DiaryLog> diaryLogs;
 }
