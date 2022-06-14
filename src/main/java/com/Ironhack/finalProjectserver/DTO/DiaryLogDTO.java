@@ -12,5 +12,7 @@ public class DiaryLogDTO {
     private String crisisType;
     private int duration;
     private String mood;
+    private String comments;
+    private String doctorName;
     private Long diaryId;
 }

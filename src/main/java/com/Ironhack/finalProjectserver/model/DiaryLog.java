@@ -19,6 +19,8 @@ public class DiaryLog {
     private String crisisType;
     private int duration;
     private String mood;
+    private String comments;
+    private String doctorName;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name="diary_id")

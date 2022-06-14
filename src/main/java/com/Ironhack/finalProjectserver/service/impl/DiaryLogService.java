@@ -27,6 +27,8 @@ public class DiaryLogService implements DiaryLogServiceInterface {
         newDiaryLog.setCrisisType(diaryLogDTO.getCrisisType());
         newDiaryLog.setDuration(diaryLogDTO.getDuration());
         newDiaryLog.setMood(diaryLogDTO.getMood());
+        newDiaryLog.setComments(diaryLogDTO.getComments());
+        newDiaryLog.setDoctorName(diaryLogDTO.getDoctorName());
         newDiaryLog.setDiary(diaryRepository.findById(diaryLogDTO.getDiaryId()).get());
         diaryLogRepository.save(newDiaryLog);
     }
@@ -46,6 +48,8 @@ public class DiaryLogService implements DiaryLogServiceInterface {
                 diaryLog.get().setCrisisType(diaryLogDTO.getCrisisType());
                 diaryLog.get().setDuration(diaryLogDTO.getDuration());
                 diaryLog.get().setMood(diaryLogDTO.getMood());
+                diaryLog.get().setComments(diaryLogDTO.getComments());
+                diaryLog.get().setDoctorName(diaryLogDTO.getDoctorName());
                 diaryLogRepository.save(diaryLog.get());
             } catch (Exception e) {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "DiaryLog not valid.");
