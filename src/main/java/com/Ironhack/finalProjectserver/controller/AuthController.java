@@ -32,13 +32,11 @@ public class AuthController {
     @Autowired
     private RoleRepository roleRepository;
 
-    /*@GetMapping("/patients")
+    @GetMapping("/patients")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> search(@RequestParam Optional<String> name) {
-
-        return userRepository.findUsersByRoleName(name.get());
-
-    }*/
+    public List<User> search(@RequestParam Long roleId) {
+        return userRepository.findAllByRoles_id(roleId);
+    }
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getUsers() {

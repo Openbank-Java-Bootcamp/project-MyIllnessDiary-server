@@ -59,6 +59,7 @@ public class DiaryLogService implements DiaryLogServiceInterface {
         }
     }
 
+
     public void deleteDiaryLog(Long id) {
         DiaryLog diaryLogFromDB = diaryLogRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "DiaryLog not found"));
         diaryLogRepository.deleteById(id);
