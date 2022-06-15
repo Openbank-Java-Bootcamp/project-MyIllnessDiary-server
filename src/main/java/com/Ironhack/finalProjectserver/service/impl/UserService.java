@@ -31,6 +31,9 @@ public class UserService implements UserServiceInterface, UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private RoleService roleService;
+
     public User saveUser(User userSignupDTO) {
         log.info("Saving a new user {} inside of the database", userSignupDTO.getName());
         User user = new User(userSignupDTO.getName(), userSignupDTO.getEmail(), userSignupDTO.getPassword());
@@ -60,5 +63,14 @@ public class UserService implements UserServiceInterface, UserDetailsService {
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
 
         }
+    }
+
+    public User saveUserAsPatient(User userSignupDTO) {
+        log.info("Saving a new user {} inside of the database", userSignupDTO.getName());
+        User user = new User(userSignupDTO.getName(), userSignupDTO.getEmail(), userSignupDTO.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User returnUser = userRepository.save(user);
+        roleService.addRoleToUser(returnUser.getEmail(), "ROLE_PATIENT");
+        return returnUser;
     }
 }

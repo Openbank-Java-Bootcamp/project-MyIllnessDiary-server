@@ -53,7 +53,7 @@ public class AuthController {
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     public User saveUser(@RequestBody @Valid User user) {
-        return userService.saveUser(user);
+        return userService.saveUserAsPatient(user);
     }
 
     @GetMapping("/verify")
