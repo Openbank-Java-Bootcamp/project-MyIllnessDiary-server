@@ -16,8 +16,11 @@ public class Diary {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate diaryDate;
+    private String diaryWeek;
 
     @OneToMany(mappedBy = "diary",cascade=CascadeType.ALL)
     private List<DiaryLog> diaryLogs;
+    //@OneToOne
+    //@JoinColumn(name = "diaryLogs_id")
+    //private DiaryLog diaryLogs;
 }

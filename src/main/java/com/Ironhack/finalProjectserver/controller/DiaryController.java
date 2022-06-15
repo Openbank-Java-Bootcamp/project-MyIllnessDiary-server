@@ -25,6 +25,8 @@ public class DiaryController {
         return diaryService.findById(diaryId);
     }
 
+
+
     @GetMapping("/diaries")
     @ResponseStatus(HttpStatus.OK)
     public List<Diary> getDiaries() {

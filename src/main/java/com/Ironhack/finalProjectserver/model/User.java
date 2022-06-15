@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -33,6 +34,10 @@ public class User {
     @OneToOne
     @JoinColumn(name = "roles_id")
     private Role roles;
+
+    //@OneToMany
+    //@JoinColumn(name = "diary_id")
+    //private List<Diary> diaryList;
 
     public User(String name, String email, String password) {
         this.name = name;
