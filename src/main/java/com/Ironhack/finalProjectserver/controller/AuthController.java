@@ -34,8 +34,8 @@ public class AuthController {
 
     @GetMapping("/patients")
     @ResponseStatus(HttpStatus.OK)
-    public List<User> search(@RequestParam Long roleId) {
-        return userRepository.findAllByRoles_id(roleId);
+    public List<User> search() {
+        return userRepository.findAllByRoles_id();
     }
     @GetMapping("/users")
     @ResponseStatus(HttpStatus.OK)
