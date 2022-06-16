@@ -60,7 +60,7 @@ public class AuthController {
         String email = (String) authentication.getPrincipal();
         User userFromDb = userRepository.findByEmail(email);
         //RoleToUserDTO roleToUserDTO = new RoleToUserDTO(userFromDb.getEmail(), userFromDb.getRoles());
-        UserVerifyDTO userVerifyDTO= new UserVerifyDTO(userFromDb.getName(),userFromDb.getRoles().getName());
+        UserVerifyDTO userVerifyDTO= new UserVerifyDTO(userFromDb.getName(),userFromDb.getRoles().getName(),userFromDb.getId().toString());
         Gson gson = new Gson();
         String userDetails = gson.toJson(userVerifyDTO);
         return userDetails;

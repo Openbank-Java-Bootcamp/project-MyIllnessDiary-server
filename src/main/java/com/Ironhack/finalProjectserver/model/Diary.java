@@ -1,5 +1,6 @@
 package com.Ironhack.finalProjectserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,12 @@ public class Diary {
 
     @OneToMany(mappedBy = "diary",cascade=CascadeType.ALL)
     private List<DiaryLog> diaryLogs;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
+
     //@OneToOne
     //@JoinColumn(name = "diaryLogs_id")
     //private DiaryLog diaryLogs;

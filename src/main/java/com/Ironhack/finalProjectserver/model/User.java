@@ -35,6 +35,9 @@ public class User {
     @JoinColumn(name = "roles_id")
     private Role roles;
 
+    @OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+    private List<Diary> diaries;
+
     //@OneToMany
     //@JoinColumn(name = "diary_id")
     //private List<Diary> diaryList;

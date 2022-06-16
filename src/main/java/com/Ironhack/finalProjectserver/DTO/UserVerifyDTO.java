@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class UserVerifyDTO {
     private String name;
     private String role;
+    private String id;
 }

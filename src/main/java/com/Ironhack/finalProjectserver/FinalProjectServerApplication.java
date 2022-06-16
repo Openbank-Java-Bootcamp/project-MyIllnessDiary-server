@@ -1,7 +1,9 @@
 package com.Ironhack.finalProjectserver;
 
+import com.Ironhack.finalProjectserver.model.Diary;
 import com.Ironhack.finalProjectserver.model.Role;
 import com.Ironhack.finalProjectserver.model.User;
+import com.Ironhack.finalProjectserver.service.impl.DiaryService;
 import com.Ironhack.finalProjectserver.service.impl.RoleService;
 import com.Ironhack.finalProjectserver.service.impl.UserService;
 import org.springframework.boot.CommandLineRunner;
@@ -29,15 +31,15 @@ public class FinalProjectServerApplication {
 
 	@Bean
 
-	CommandLineRunner run(UserService userService, RoleService roleService) {
+	CommandLineRunner run(UserService userService, RoleService roleService, DiaryService diaryService) {
 		return args -> {
 			roleService.saveRole(new Role(null, "ROLE_PATIENT"));
 			roleService.saveRole(new Role(null, "ROLE_DOCTOR"));
 
-			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "P@ssw0rd", null));
-			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "P@ssw0rd", null));
-			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "P@ssw0rd", null));
-			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "P@ssw0rd", null));
+			userService.saveUser(new User(null, "John Doe", "john@gmail.com", "P@ssw0rd", null, null));
+			userService.saveUser(new User(null, "James Smith", "james@gmail.com", "P@ssw0rd", null,null));
+			userService.saveUser(new User(null, "Jane Carry", "jane@gmail.com", "P@ssw0rd", null, null));
+			userService.saveUser(new User(null, "Chris Anderson", "chris@gmail.com", "P@ssw0rd", null, null));
 
 			roleService.addRoleToUser("john@gmail.com", "ROLE_PATIENT");
 			roleService.addRoleToUser("james@gmail.com", "ROLE_DOCTOR");
