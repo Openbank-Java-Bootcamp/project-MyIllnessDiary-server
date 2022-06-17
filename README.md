@@ -57,7 +57,7 @@ Spring Security: https://www.marcobehler.com/guides/spring-security
  
 
 TRELLO: https://trello.com/b/0mvFNewD/final-project 
-
+SLIDES: https://slides.com/mariajerfer
 
 
 
